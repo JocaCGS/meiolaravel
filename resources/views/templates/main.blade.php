@@ -72,18 +72,7 @@
                                 </span>
                             @endauth
                         </a>
-                        <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <li>
-                            <a
-                                href=""
-                                onclick="event.preventDefault(); this.closest('form').submit();"
-                                class="dropdown-item"
-                                >
-                                <span class="ps-1 text-secondary ">Sair</span>
-                            </a>
-                        </li>
-                        </form>
+                        
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="" class="dropdown-item">
@@ -93,15 +82,18 @@
                                     <span class="ps-1 text-secondary ">Alterar Senha</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="" class="dropdown-item" >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#777" class="bi bi-door-open" viewBox="0 0 16 16">
-                                        <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1"/>
-                                        <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117M11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5M4 1.934V15h6V1.077z"/>
-                                    </svg>
-                                    <span class="ps-1 text-secondary ">Sair</span>
-                                </a>
-                            </li>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <li>
+                                    <a href="" onclick="event.preventDefault(); this.closest('form').submit();" class="dropdown-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#777" class="bi bi-door-open" viewBox="0 0 16 16">
+                                            <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1"/>
+                                            <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117M11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5M4 1.934V15h6V1.077z"/>
+                                        </svg>
+                                        <span class="ps-1 text-secondary ">Sair</span>
+                                    </a>
+                                </li>
+                            </form>
                         </ul>
                     </li>
                 </ul>
@@ -118,12 +110,13 @@
             <div class="col d-flex justify-content-end">
                 @if($rota != '')
                     @can("create", $class)
-                    <a href= "{{ route($rota) }}" class="btn btn-secondary ms-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#FFF" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                        </svg>
-                    </a>
+                        <a href= "{{ route($rota) }}" class="btn btn-secondary ms-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#FFF" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                            </svg>
+                        </a>
                     @endcan
+                    
                 @endif
                 @if(!empty($relatorio) && Route::has($relatorio))
                         <a href= "{{ route($relatorio) }}" class="btn btn-secondary ms-2" target="_blank">
